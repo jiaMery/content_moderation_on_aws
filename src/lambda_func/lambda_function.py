@@ -84,7 +84,7 @@ def bedrock_modration(text):
     {text}
             
     ###### Question ######
-    Based on the following Moderation policy and QA, tell me if the photo containes unsafe content, also give its category and reason if it's unsafe. Please anwser the question with the following format and only put explanation into the reason field: 
+    Based on the following Moderation policy and QA, tell me if the photo containes unsafe content, also give its category and reason. Please anwser the question with the following format and only put explanation into the reason field: 
     """
 
     prompt_template += """
@@ -161,6 +161,7 @@ def text_moderation(bucketName, putObjectPathName):
     file = s3.get_object(Bucket=bucketName, Key=putObjectPathName)
     text = file['Body'].read().decode('utf-8')
     # Content moderation 
+    content_result["Text"] = text
     content_result["Text_Bedrock_lable"] = bedrock_modration(text)
     content_result["Text_comprehend_lable"] = comprehend_dect(text)
 
