@@ -10,13 +10,13 @@ import sys
 
 #Analyzes videos using the Rekognition Video API 
 class VideoDetect:
-    jobId = 'xxxxxx'
+    jobId = ''
     rek = boto3.client('rekognition')
-    queueUrl = 'xxxxx'
-    roleArn = 'xxxxx'
-    topicArn = 'xxx'
-    bucket = 'BucketName'
-    video = 'dog_play.mp4'
+    queueUrl = ''
+    roleArn = ''
+    topicArn = ''
+    bucket = ''
+    video = ''
 
     #Entry point. Starts analysis of video in specified bucket.
     def main(self):
