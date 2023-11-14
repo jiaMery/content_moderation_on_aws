@@ -1,0 +1,201 @@
+{
+    "jobName": "speech_polly.mp3168555",
+    "accountId": "387745077854",
+    "status": "COMPLETED",
+    "results": {
+        "transcripts": [
+            {
+                "transcript": "Hi, my name is Joanna. I will read any text you type here."
+            }
+        ],
+        "items": [
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.999",
+                        "content": "Hi"
+                    }
+                ],
+                "start_time": "0.009",
+                "end_time": "0.5"
+            },
+            {
+                "type": "punctuation",
+                "alternatives": [
+                    {
+                        "confidence": "0.0",
+                        "content": ","
+                    }
+                ]
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.999",
+                        "content": "my"
+                    }
+                ],
+                "start_time": "0.74",
+                "end_time": "1.0"
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.999",
+                        "content": "name"
+                    }
+                ],
+                "start_time": "1.009",
+                "end_time": "1.259"
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.999",
+                        "content": "is"
+                    }
+                ],
+                "start_time": "1.269",
+                "end_time": "1.34"
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.988",
+                        "content": "Joanna"
+                    }
+                ],
+                "start_time": "1.35",
+                "end_time": "2.069"
+            },
+            {
+                "type": "punctuation",
+                "alternatives": [
+                    {
+                        "confidence": "0.0",
+                        "content": "."
+                    }
+                ]
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.998",
+                        "content": "I"
+                    }
+                ],
+                "start_time": "2.269",
+                "end_time": "2.279"
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.997",
+                        "content": "will"
+                    }
+                ],
+                "start_time": "2.349",
+                "end_time": "2.69"
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.999",
+                        "content": "read"
+                    }
+                ],
+                "start_time": "2.7",
+                "end_time": "2.869"
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.999",
+                        "content": "any"
+                    }
+                ],
+                "start_time": "2.88",
+                "end_time": "3.069"
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.999",
+                        "content": "text"
+                    }
+                ],
+                "start_time": "3.079",
+                "end_time": "3.43"
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.999",
+                        "content": "you"
+                    }
+                ],
+                "start_time": "3.44",
+                "end_time": "3.539"
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.999",
+                        "content": "type"
+                    }
+                ],
+                "start_time": "3.549",
+                "end_time": "3.849"
+            },
+            {
+                "type": "pronunciation",
+                "alternatives": [
+                    {
+                        "confidence": "0.999",
+                        "content": "here"
+                    }
+                ],
+                "start_time": "3.859",
+                "end_time": "4.15"
+            },
+            {
+                "type": "punctuation",
+                "alternatives": [
+                    {
+                        "confidence": "0.0",
+                        "content": "."
+                    }
+                ]
+            }
+        ],
+        "toxicity_detection": [
+            {
+                "start_time": 0.0,
+                "end_time": 4.21,
+                "text": "Hi, my name is Joanna. I will read any text you type here.",
+                "toxicity": 0.2725,
+                "categories": {
+                    "profanity": 0.2765,
+                    "hate_speech": 0.1654,
+                    "sexual": 0.3533,
+                    "insult": 0.148,
+                    "violence_or_threat": 0.5169,
+                    "graphic": 0.3581,
+                    "harassment_or_abuse": 0.4127
+                }
+            }
+        ]
+    }
+}
