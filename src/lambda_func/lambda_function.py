@@ -37,7 +37,7 @@ def comprehend_dect(text):
     # Detect language
     detect_language_result = comprehend.detect_dominant_language(Text=text)
     language_code = detect_language_result['Languages'][0]['LanguageCode']
-    
+
     sentiment = comprehend.detect_sentiment(Text=text, LanguageCode= 'en')
     pii_entities = comprehend.detect_pii_entities(Text=text, LanguageCode='en')   
     comprehend_analysis_dict['Sentiment'] = sentiment['Sentiment']
@@ -84,7 +84,7 @@ def bedrock_modration(text):
     {text}
             
     ###### Question ######
-    Based on the following Moderation policy and QA, tell me if the photo containes unsafe content, also give its category and reason. Please anwser the question with the following format and only put explanation into the reason field: 
+    Based on the following Moderation policy and QA, tell me if the text containes unsafe content, also give its category and reason. Please anwser the question with the following format and only put explanation into the reason field: 
     """
 
     prompt_template += """
