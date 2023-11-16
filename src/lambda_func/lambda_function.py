@@ -37,7 +37,7 @@ def comprehend_dect(text):
     # Detect language
     detect_language_result = comprehend.detect_dominant_language(Text=text)
     language_code = detect_language_result['Languages'][0]['LanguageCode']
-
+    
     sentiment = comprehend.detect_sentiment(Text=text, LanguageCode= 'en')
     pii_entities = comprehend.detect_pii_entities(Text=text, LanguageCode='en')   
     comprehend_analysis_dict['Sentiment'] = sentiment['Sentiment']
