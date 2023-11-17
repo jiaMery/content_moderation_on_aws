@@ -3,106 +3,106 @@ test2
 
 Response
 {
-  "statusCode": 200,
-  "content_moderation_result": {
-    "file_uri": "s3://s3-exp-data/content_moderation_test_data/speech_polly.mp3",
-    "Text": "I am unhappy,and My name is Maria,email is xiaohua@amazon.com.\n",
-    "Text_Bedrock_lable": " {\n  \"flag\": \"false\", \n  \"category\": \"none\",\n  \"reason\": \"The given text does not contain any explicit nudity, suggestive, violent, visually disturbing, rude gestures, drugs, tobacco, alcohol, gambling or hate symbols content according to the moderation policy. It only contains personal information like name, email and emotional state.\"\n}",
-    "Text_comprehend_lable": {
-      "Sentiment": "NEGATIVE",
-      "SentimentScore": {
-        "Positive": 0.0007658755639567971,
-        "Negative": 0.9778977036476135,
-        "Neutral": 0.021264728158712387,
-        "Mixed": 0.00007161591929616407
-      },
-      "PII": {
-        "Entities": [
-          {
-            "Score": 0.9999908208847046,
-            "Type": "NAME",
-            "BeginOffset": 28,
-            "EndOffset": 33
-          },
-          {
-            "Score": 0.9999548196792603,
-            "Type": "EMAIL",
-            "BeginOffset": 43,
-            "EndOffset": 61
-          }
-        ],
-        "ResponseMetadata": {
-          "RequestId": "f843aa1e-1577-489f-a205-58e0a61a2591",
-          "HTTPStatusCode": 200,
-          "HTTPHeaders": {
-            "x-amzn-requestid": "f843aa1e-1577-489f-a205-58e0a61a2591",
-            "content-type": "application/x-amz-json-1.1",
-            "content-length": "165",
-            "date": "Tue, 14 Nov 2023 14:57:06 GMT"
-          },
-          "RetryAttempts": 0
+    "statusCode": 200,
+    "content_moderation_result": {
+        "file_uri": "s3://s3-exp-data/content_moderation_test_data/speech_polly.mp3",
+        "detect_language_result": {
+            "Languages": [
+                {
+                    "LanguageCode": "en",
+                    "Score": 0.9991849660873413
+                }
+            ],
+            "ResponseMetadata": {
+                "RequestId": "754a438a-8221-4828-974e-caf70657ff98",
+                "HTTPStatusCode": 200,
+                "HTTPHeaders": {
+                    "x-amzn-requestid": "754a438a-8221-4828-974e-caf70657ff98",
+                    "content-type": "application/x-amz-json-1.1",
+                    "content-length": "64",
+                    "date": "Thu, 16 Nov 2023 14:47:38 GMT"
+                },
+                "RetryAttempts": 0
+            }
+        },
+        "Audio_moderation": {
+            "Toxicity_lable": [
+                {
+                    "start_time": 0,
+                    "end_time": 4.21,
+                    "text": "Hi, my name is Joanna. I will read any text you type here.",
+                    "toxicity": 0.2725,
+                    "categories": {
+                        "profanity": 0.2765,
+                        "hate_speech": 0.1654,
+                        "sexual": 0.3533,
+                        "insult": 0.148,
+                        "violence_or_threat": 0.5169,
+                        "graphic": 0.3581,
+                        "harassment_or_abuse": 0.4127
+                    }
+                }
+            ],
+            "Audio2text_bedrock_lable": " {\n  \"flag\": \"false\", \n  \"category\": \"\",\n  \"reason\": \"The given text does not contain any unsafe content based on the moderation policy. It is a simple self-introduction without any problematic language.\"\n}",
+            "Audio2text_comprehend_lable": {
+                "Sentiment": "NEUTRAL",
+                "SentimentScore": {
+                    "Positive": 0.032784271985292435,
+                    "Negative": 0.00047548796283081174,
+                    "Neutral": 0.9665764570236206,
+                    "Mixed": 0.0001637813402339816
+                },
+                "PII": {
+                    "Entities": [
+                        {
+                            "Score": 0.9999608993530273,
+                            "Type": "NAME",
+                            "BeginOffset": 15,
+                            "EndOffset": 21
+                        }
+                    ],
+                    "ResponseMetadata": {
+                        "RequestId": "20e1f984-8215-47a0-a0f1-682895681093",
+                        "HTTPStatusCode": 200,
+                        "HTTPHeaders": {
+                            "x-amzn-requestid": "20e1f984-8215-47a0-a0f1-682895681093",
+                            "content-type": "application/x-amz-json-1.1",
+                            "content-length": "89",
+                            "date": "Thu, 16 Nov 2023 14:47:38 GMT"
+                        },
+                        "RetryAttempts": 0
+                    }
+                }
+            }
         }
-      }
-    },
-    "Toxicity_lable": [
-      {
-        "start_time": 0,
-        "end_time": 4.21,
-        "text": "Hi, my name is Joanna. I will read any text you type here.",
-        "toxicity": 0.2725,
-        "categories": {
-          "profanity": 0.2765,
-          "hate_speech": 0.1654,
-          "sexual": 0.3533,
-          "insult": 0.148,
-          "violence_or_threat": 0.5169,
-          "graphic": 0.3581,
-          "harassment_or_abuse": 0.4127
-        }
-      }
-    ],
-    "Audio2text_bedrock_lable": " {\n  \"flag\": \"no\",\n  \"category\": \"\",  \n  \"reason\": \"The given text does not contain any unsafe content based on the moderation policy. It only introduces a person named Joanna who will read any text typed to her. There are no signs of nudity, violence, disturbing content, rude gestures, drugs, tobacco, alcohol, gambling or hate symbols.\"\n}",
-    "Audio2text_comprehend_lable": {
-      "Sentiment": "NEUTRAL",
-      "SentimentScore": {
-        "Positive": 0.032784271985292435,
-        "Negative": 0.00047548796283081174,
-        "Neutral": 0.9665764570236206,
-        "Mixed": 0.0001637813402339816
-      },
-      "PII": {
-        "Entities": [
-          {
-            "Score": 0.9999608993530273,
-            "Type": "NAME",
-            "BeginOffset": 15,
-            "EndOffset": 21
-          }
-        ],
-        "ResponseMetadata": {
-          "RequestId": "06e6a65e-5b76-4541-9791-ea7d1cdfab18",
-          "HTTPStatusCode": 200,
-          "HTTPHeaders": {
-            "x-amzn-requestid": "06e6a65e-5b76-4541-9791-ea7d1cdfab18",
-            "content-type": "application/x-amz-json-1.1",
-            "content-length": "89",
-            "date": "Tue, 14 Nov 2023 14:58:40 GMT"
-          },
-          "RetryAttempts": 0
-        }
-      }
     }
-  }
 }
 
 Function Logs
-START RequestId: 5f33cac9-13a7-4256-9cc3-d7b207b8eebe Version: $LATEST
-[INFO]	2023-11-14T14:57:23.581Z	5f33cac9-13a7-4256-9cc3-d7b207b8eebe	{'Records': [{'eventVersion': '2.1', 'eventSource': 'aws:s3', 'awsRegion': 'us-east-1', 'eventTime': '2023-11-09T07: 38: 18.621Z', 'eventName': 'ObjectCreated:Put', 'userIdentity': {'principalId': 'AWS:AROAVUR3ILJPJZEV4HNZL:SageMaker'}, 'requestParameters': {'sourceIPAddress': '34.236.18.197'}, 'responseElements': {'x-amz-request-id': 'R18E0JV906GW0PN8', 'x-amz-id-2': 'bUJNjom+N9XpVZPUQ2CKWSUVJW+Ji92Cu1CgNqQ/XERwNnRdymIgh5bS63fH25Q1G/DR67UW+2Z/aOjQa3/9/bkLALDjWUIi'}, 's3': {'s3SchemaVersion': '1.0', 'configurationId': '2e327490-60cf-4612-9763-34ba34154616', 'bucket': {'name': 's3-exp-data', 'ownerIdentity': {'principalId': 'A2JXCANFTHXZLO'}, 'arn': 'arn:aws:s3:::s3-exp-data'}, 'object': {'key': 'content_moderation_test_data/speech_polly.mp3', 'size': 250083, 'eTag': 'f4079b17c981b0e20e5eb1df20f03a98', 'sequencer': '00654C8C6A847DF3A2'}}}]}
-[INFO]	2023-11-14T14:57:23.581Z	5f33cac9-13a7-4256-9cc3-d7b207b8eebe	Put event handled successfully
-[INFO]	2023-11-14T14:58:41.144Z	5f33cac9-13a7-4256-9cc3-d7b207b8eebe	Invalid file type
-[INFO]	2023-11-14T14:58:41.144Z	5f33cac9-13a7-4256-9cc3-d7b207b8eebe	{'file_uri': 's3://s3-exp-data/content_moderation_test_data/speech_polly.mp3', 'Text': 'I am unhappy,and My name is Maria,email is xiaohua@amazon.com.\n', 'Text_Bedrock_lable': ' {\n  "flag": "false", \n  "category": "none",\n  "reason": "The given text does not contain any explicit nudity, suggestive, violent, visually disturbing, rude gestures, drugs, tobacco, alcohol, gambling or hate symbols content according to the moderation policy. It only contains personal information like name, email and emotional state."\n}', 'Text_comprehend_lable': {'Sentiment': 'NEGATIVE', 'SentimentScore': {'Positive': 0.0007658755639567971, 'Negative': 0.9778977036476135, 'Neutral': 0.021264728158712387, 'Mixed': 7.161591929616407e-05}, 'PII': {'Entities': [{'Score': 0.9999908208847046, 'Type': 'NAME', 'BeginOffset': 28, 'EndOffset': 33}, {'Score': 0.9999548196792603, 'Type': 'EMAIL', 'BeginOffset': 43, 'EndOffset': 61}], 'ResponseMetadata': {'RequestId': 'f843aa1e-1577-489f-a205-58e0a61a2591', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': 'f843aa1e-1577-489f-a205-58e0a61a2591', 'content-type': 'application/x-amz-json-1.1', 'content-length': '165', 'date': 'Tue, 14 Nov 2023 14:57:06 GMT'}, 'RetryAttempts': 0}}}, 'Toxicity_lable': [{'start_time': 0.0, 'end_time': 4.21, 'text': 'Hi, my name is Joanna. I will read any text you type here.', 'toxicity': 0.2725, 'categories': {'profanity': 0.2765, 'hate_speech': 0.1654, 'sexual': 0.3533, 'insult': 0.148, 'violence_or_threat': 0.5169, 'graphic': 0.3581, 'harassment_or_abuse': 0.4127}}], 'Audio2text_bedrock_lable': ' {\n  "flag": "no",\n  "category": "",  \n  "reason": "The given text does not contain any unsafe content based on the moderation policy. It only introduces a person named Joanna who will read any text typed to her. There are no signs of nudity, violence, disturbing content, rude gestures, drugs, tobacco, alcohol, gambling or hate symbols."\n}', 'Audio2text_comprehend_lable': {'Sentiment': 'NEUTRAL', 'SentimentScore': {'Positive': 0.032784271985292435, 'Negative': 0.00047548796283081174, 'Neutral': 0.9665764570236206, 'Mixed': 0.0001637813402339816}, 'PII': {'Entities': [{'Score': 0.9999608993530273, 'Type': 'NAME', 'BeginOffset': 15, 'EndOffset': 21}], 'ResponseMetadata': {'RequestId': '06e6a65e-5b76-4541-9791-ea7d1cdfab18', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '06e6a65e-5b76-4541-9791-ea7d1cdfab18', 'content-type': 'application/x-amz-json-1.1', 'content-length': '89', 'date': 'Tue, 14 Nov 2023 14:58:40 GMT'}, 'RetryAttempts': 0}}}}
-END RequestId: 5f33cac9-13a7-4256-9cc3-d7b207b8eebe
-REPORT RequestId: 5f33cac9-13a7-4256-9cc3-d7b207b8eebe	Duration: 77565.49 ms	Billed Duration: 77566 ms	Memory Size: 10240 MB	Max Memory Used: 136 MB
+[INFO
+]	2023-11-16T14: 46: 16.925Z		Found credentials in environment variables.
+START RequestId: c37590ee-f043-4af1-8c41-99b96bb33932 Version: $LATEST
+[INFO
+]	2023-11-16T14: 46: 17.122Z	c37590ee-f043-4af1-8c41-99b96bb33932	{'Records': [
+        {'eventVersion': '2.1', 'eventSource': 'aws:s3', 'awsRegion': 'us-east-1', 'eventTime': '2023-11-09T07: 38: 18.621Z', 'eventName': 'ObjectCreated:Put', 'userIdentity': {'principalId': 'AWS:AROAVUR3ILJPJZEV4HNZL:SageMaker'
+            }, 'requestParameters': {'sourceIPAddress': '34.236.18.197'
+            }, 'responseElements': {'x-amz-request-id': 'R18E0JV906GW0PN8', 'x-amz-id-2': 'bUJNjom+N9XpVZPUQ2CKWSUVJW+Ji92Cu1CgNqQ/XERwNnRdymIgh5bS63fH25Q1G/DR67UW+2Z/aOjQa3/9/bkLALDjWUIi'
+            }, 's3': {'s3SchemaVersion': '1.0', 'configurationId': '2e327490-60cf-4612-9763-34ba34154616', 'bucket': {'name': 's3-exp-data', 'ownerIdentity': {'principalId': 'A2JXCANFTHXZLO'
+                    }, 'arn': 'arn:aws:s3: : :s3-exp-data'
+                }, 'object': {'key': 'content_moderation_test_data/speech_polly.mp3', 'size': 250083, 'eTag': 'f4079b17c981b0e20e5eb1df20f03a98', 'sequencer': '00654C8C6A847DF3A2'
+                }
+            }
+        }
+    ]
+}
+[INFO
+]	2023-11-16T14: 46: 17.122Z	c37590ee-f043-4af1-8c41-99b96bb33932	Put event handled successfully
+[INFO
+]	2023-11-16T14: 47: 38.793Z	c37590ee-f043-4af1-8c41-99b96bb33932	Invalid file type
+[INFO
+]	2023-11-16T14: 47: 38.794Z	c37590ee-f043-4af1-8c41-99b96bb33932	{'file_uri': 's3: //s3-exp-data/content_moderation_test_data/speech_polly.mp3', 'detect_language_result': {'Languages': [{'LanguageCode': 'en', 'Score': 0.9991849660873413}], 'ResponseMetadata': {'RequestId': '754a438a-8221-4828-974e-caf70657ff98', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '754a438a-8221-4828-974e-caf70657ff98', 'content-type': 'application/x-amz-json-1.1', 'content-length': '64', 'date': 'Thu, 16 Nov 2023 14:47:38 GMT'}, 'RetryAttempts': 0}}, 'Audio_moderation': {'Toxicity_lable': [{'start_time': 0.0, 'end_time': 4.21, 'text': 'Hi, my name is Joanna. I will read any text you type here.', 'toxicity': 0.2725, 'categories': {'profanity': 0.2765, 'hate_speech': 0.1654, 'sexual': 0.3533, 'insult': 0.148, 'violence_or_threat': 0.5169, 'graphic': 0.3581, 'harassment_or_abuse': 0.4127}}], 'Audio2text_bedrock_lable': ' {\n  "flag": "false", \n  "category": "",\n  "reason": "The given text does not contain any unsafe content based on the moderation policy. It is a simple self-introduction without any problematic language."\n}', 'Audio2text_comprehend_lable': {'Sentiment': 'NEUTRAL', 'SentimentScore': {'Positive': 0.032784271985292435, 'Negative': 0.00047548796283081174, 'Neutral': 0.9665764570236206, 'Mixed': 0.0001637813402339816}, 'PII': {'Entities': [{'Score': 0.9999608993530273, 'Type': 'NAME', 'BeginOffset': 15, 'EndOffset': 21}], 'ResponseMetadata': {'RequestId': '20e1f984-8215-47a0-a0f1-682895681093', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '20e1f984-8215-47a0-a0f1-682895681093', 'content-type': 'application/x-amz-json-1.1', 'content-length': '89', 'date': 'Thu, 16 Nov 2023 14:47:38 GMT'}, 'RetryAttempts': 0}}}}}
+END RequestId: c37590ee-f043-4af1-8c41-99b96bb33932
+REPORT RequestId: c37590ee-f043-4af1-8c41-99b96bb33932	Duration: 81674.14 ms	Billed Duration: 81675 ms	Memory Size: 10240 MB	Max Memory Used: 134 MB	Init Duration: 2010.10 ms
 
 Request ID
-5f33cac9-13a7-4256-9cc3-d7b207b8eebe
+c37590ee-f043-4af1-8c41-99b96bb33932

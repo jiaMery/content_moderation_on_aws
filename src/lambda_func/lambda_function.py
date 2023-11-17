@@ -1,43 +1,45 @@
 import json
 import logging
 import boto3
-import time
 import random
-import string
 from easydict import EasyDict as edict
 from langchain.llms.bedrock import Bedrock
 
-rand_int = random.randint(0, 1000000) 
+rand_int = random.randint(0, 10000000) 
 random_char = str(rand_int)
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-mySession = boto3.session.Session()
-awsRegion = mySession.region_name
-rekognition = boto3.client('rekognition')
 s3 = boto3.client('s3')
-transcribe = boto3.client('transcribe')
 
 image_file = ["jpg", "jpeg", "png"]
 video_file = ["mp4", "mov"]
 audio_file = ["amr", "flac", "mp3", "mp4", "ogg", "webm", "wav"]
 text_file = ["txt"]
+content_result = edict({})
 
-content_result = edict()
-
-
-def comprehend_dect(text):
-    comprehend_analysis_dict = edict()
-    is_negative = False 
-    negative_score = 0
-    age = None
-
+def translate2en(text):
+    translate = boto3.client(service_name='translate')
     comprehend = boto3.client(service_name='comprehend')
     # Detect language
     detect_language_result = comprehend.detect_dominant_language(Text=text)
     language_code = detect_language_result['Languages'][0]['LanguageCode']
+    
+    if language_code != 'en':
+        # Translate text's language code to English
+        response = translate.translate_text(Text=text, SourceLanguageCode=language_code, TargetLanguageCode="en")
+        text = response["TranslatedText"]
+    else:
+        pass
+    return text
 
+
+def comprehend_dect(text):
+    comprehend = boto3.client(service_name='comprehend')
+    comprehend_analysis_dict = edict()
+
+    text = translate2en(text)
     sentiment = comprehend.detect_sentiment(Text=text, LanguageCode= 'en')
     pii_entities = comprehend.detect_pii_entities(Text=text, LanguageCode='en')   
     comprehend_analysis_dict['Sentiment'] = sentiment['Sentiment']
@@ -45,10 +47,9 @@ def comprehend_dect(text):
     comprehend_analysis_dict["PII"] = pii_entities
     return comprehend_analysis_dict
 
-
 def bedrock_modration(text):
-    
-    bedrock = boto3.client(service_name="bedrock-runtime")   
+    bedrock = boto3.client(service_name="bedrock-runtime")
+    text = translate2en(text)
 
     inference_modifier = {'max_tokens_to_sample':4096, 
                           "temperature":0.5,
@@ -60,7 +61,6 @@ def bedrock_modration(text):
                     client = bedrock, 
                     model_kwargs = inference_modifier )
     
-
     # Create a prompt template that has multiple input variables
     moderation_policy = """
     1. Explicit Nudity: it contains Nudity, Graphic Male Nudity, Graphic Female Nudity, Sexual Activity, Illustrated Explicit Nudity and Adult Toys.
@@ -84,7 +84,7 @@ def bedrock_modration(text):
     {text}
             
     ###### Question ######
-    Based on the following Moderation policy and QA, tell me if the text containes unsafe content, also give its category and reason. Please anwser the question with the following format and only put explanation into the reason field: 
+    Based on the following Moderation policy and QA, tell me if the photo containes unsafe content, also give its category and reason. Please anwser the question with the following format and only put explanation into the reason field: 
     """
 
     prompt_template += """
@@ -102,29 +102,34 @@ def bedrock_modration(text):
 
 
 def image_moderation(bucketName, putObjectPathName):
+    image_moderation_dict = edict()
+    rekognition = boto3.client('rekognition')
     image = {'S3Object':{'Bucket':bucketName,'Name':putObjectPathName}}
-    content_result["Image_moderation_lable"] = rekognition.detect_moderation_labels(Image=image)
+    image_moderation_dict["Image_moderation_lable"] = rekognition.detect_moderation_labels(Image=image)
     # Face Dection on Image
-    content_result["Image_Face_analysis_lable"] = rekognition.detect_faces(Image=image,Attributes=['ALL'])
+    image_moderation_dict["Image_Face_analysis_lable"] = rekognition.detect_faces(Image=image,Attributes=['ALL'])
     # Rekognition celebrities on Image
-    content_result["Image_Celebrities_lable"] = rekognition.recognize_celebrities(Image=image)
+    image_moderation_dict["Image_Celebrities_lable"] = rekognition.recognize_celebrities(Image=image)
     # Extract Text from Image
+    image_moderation_dict["Text_from_Image_Confidence99"] = ""
     extra_text_results = rekognition.detect_text(Image=image)
-    content_result["Extra_text_results"] = extra_text_results
-    content_result["Text_from_Image"] = ""
-    # logger.info(type(content_result["Text_from_Image"][0]['Confidence']))
+    image_moderation_dict["Extra_text_results"] = extra_text_results
+    
     for text in extra_text_results["TextDetections"]:
         if text['Confidence'] >= 99:
-            content_result["Text_from_Image"] += text['DetectedText']
-    if "Text_from_Image" in content_result and len(content_result["Text_from_Image"])>0:
-        content_result["ImageText_bedrock_lable"] = bedrock_modration(content_result["Text_from_Image"])
-        content_result["ImageText_comprehend_lable"] = comprehend_dect(content_result["Text_from_Image"])
-    # # Object Dection
-    # content_result["Object_lable"] = rekognition.detect_labels(Image=image)
+            image_moderation_dict["Text_from_Image_Confidence99"] += text['DetectedText']
+    if len(image_moderation_dict["Text_from_Image_Confidence99"])>0:
+        image_moderation_dict["ImageText_bedrock_lable"] = bedrock_modration(image_moderation_dict["Text_from_Image_Confidence99"])
+        image_moderation_dict["ImageText_comprehend_lable"] = comprehend_dect(image_moderation_dict["Text_from_Image_Confidence99"])
+    else:
+        pass
+
+    return image_moderation_dict
 
   
-def Audio_moderation(bucketName, putObjectPathName, file_uri):
-    
+def audio_moderation(bucketName, putObjectPathName, file_uri):
+    image_moderation_dict = edict()
+    transcribe = boto3.client('transcribe')
     transcribe_job_name = putObjectPathName.split("/")[-1] + random_char
     outputkey = putObjectPathName.split(".")[0] + random_char + ".json"
     
@@ -149,22 +154,39 @@ def Audio_moderation(bucketName, putObjectPathName, file_uri):
     # Toxicity detection
     response = s3.get_object(Bucket=bucketName, Key=outputkey)
     json_data = edict(json.loads(response['Body'].read()))
-    content_result["Toxicity_lable"] = json_data.results.toxicity_detection
+    image_moderation_dict["Toxicity_lable"] = json_data.results.toxicity_detection
     #Put the text content of audio file to Bedrock and Comprehend to get content moderaion results
     audio2text = json_data.results.toxicity_detection[0].text
-    content_result["Audio2text_bedrock_lable"] = bedrock_modration(audio2text)
-    content_result["Audio2text_comprehend_lable"] = comprehend_dect(audio2text)
-
+    image_moderation_dict["Audio2text_bedrock_lable"] = bedrock_modration(audio2text)
+    image_moderation_dict["Audio2text_comprehend_lable"] = comprehend_dect(audio2text)
+    return image_moderation_dict
     
 def text_moderation(bucketName, putObjectPathName):
+    text_moderation_dict = edict()
     # Read file
     file = s3.get_object(Bucket=bucketName, Key=putObjectPathName)
     text = file['Body'].read().decode('utf-8')
+    
     # Content moderation 
-    content_result["Text"] = text
-    content_result["Text_Bedrock_lable"] = bedrock_modration(text)
-    content_result["Text_comprehend_lable"] = comprehend_dect(text)
+    text_moderation_dict["Text"] = text
+    text_moderation_dict["Text_Bedrock_lable"] = bedrock_modration(text)
+    text_moderation_dict["Text_comprehend_lable"] = comprehend_dect(text)
+    
+    return text_moderation_dict
 
+
+def output_func(bucketName, putObjectPathName, results):
+    json_data = json.dumps(results)
+    outputkey = putObjectPathName.split("/")[0] + "/content_moderation_results/" + putObjectPathName.split("/")[-1] +".json"
+    if len(content_result["Image_moderation"])>0 or len(content_result["Audio_moderation"])>0 or len(content_result["Text_moderation"])>0:
+        s3.put_object(
+            Bucket=bucketName, 
+            Key=outputkey,
+            Body=json_data
+            )
+    else:
+        pass
+    return outputkey
   
 def lambda_handler(event, context):
     logger.info(event)
@@ -179,11 +201,11 @@ def lambda_handler(event, context):
     put_object_type = putObjectPathName.split(".")[-1]
     # Content Moderation
     if put_object_type in image_file:
-        image_moderation(bucketName, putObjectPathName)
+        content_result["Image_moderation"] = image_moderation(bucketName, putObjectPathName)
     if put_object_type in audio_file:
-        Audio_moderation(bucketName, putObjectPathName, file_uri)
+        content_result["Audio_moderation"] = audio_moderation(bucketName, putObjectPathName, file_uri)
     if put_object_type in text_file:
-        text_moderation(bucketName, putObjectPathName)
+        content_result["Text_moderation"] = text_moderation(bucketName, putObjectPathName)
     else:
         logging.info("Invalid file type")
         
