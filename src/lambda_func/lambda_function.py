@@ -34,12 +34,16 @@ def comprehend_dect(text):
     age = None
 
     comprehend = boto3.client(service_name='comprehend')
+    translate = boto3.client(service_name='translate')
     # Detect language
     detect_language_result = comprehend.detect_dominant_language(Text=text)
     language_code = detect_language_result['Languages'][0]['LanguageCode']
-
-    sentiment = comprehend.detect_sentiment(Text=text, LanguageCode= 'en')
-    pii_entities = comprehend.detect_pii_entities(Text=text, LanguageCode='en')   
+    if language_code == 'en':
+        text_en = text
+    else:
+        text_en = translate.translate_text(Text=text, SourceLanguageCode=language_code, TargetLanguageCode="en")
+    sentiment = comprehend.detect_sentiment(Text=text_en, LanguageCode= 'en')
+    pii_entities = comprehend.detect_pii_entities(Text=text_en, LanguageCode='en')
     comprehend_analysis_dict['Sentiment'] = sentiment['Sentiment']
     comprehend_analysis_dict['SentimentScore'] = sentiment['SentimentScore']
     comprehend_analysis_dict["PII"] = pii_entities
