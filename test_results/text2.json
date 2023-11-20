@@ -1,0 +1,83 @@
+Test Event Name
+test-text2
+
+Response
+{
+    "statusCode": 200,
+    "content_moderation_result": {
+        "file_uri": "s3://s3-exp-data/content_moderation_test_data/test2.txt",
+        "detect_language_result": {
+            "Languages": [
+                {
+                    "LanguageCode": "en",
+                    "Score": 0.9971113204956055
+                }
+            ],
+            "ResponseMetadata": {
+                "RequestId": "75ab3e53-2f17-4d80-8118-e2483fe8a587",
+                "HTTPStatusCode": 200,
+                "HTTPHeaders": {
+                    "x-amzn-requestid": "75ab3e53-2f17-4d80-8118-e2483fe8a587",
+                    "content-type": "application/x-amz-json-1.1",
+                    "content-length": "64",
+                    "date": "Thu, 16 Nov 2023 15:01:10 GMT"
+                },
+                "RetryAttempts": 0
+            }
+        },
+        "Text_moderation": {
+            "Text": "I hate this world, this world confuses me, so I want to destroy the earth.",
+            "Text_Bedrock_lable": " {\n  \"flag\": \"yes\",\n  \"category\": \"Hate Symbols\",\n  \"reason\": \"The text expresses hate towards the world and a desire to destroy the earth, which falls under the Hate Symbols category in the moderation policy.\"\n}",
+            "Text_comprehend_lable": {
+                "Sentiment": "NEGATIVE",
+                "SentimentScore": {
+                    "Positive": 0.001196062657982111,
+                    "Negative": 0.9807764887809753,
+                    "Neutral": 0.011617760173976421,
+                    "Mixed": 0.006409658584743738
+                },
+                "PII": {
+                    "Entities": [],
+                    "ResponseMetadata": {
+                        "RequestId": "912d336a-b4a3-4ded-a849-ab87742358fe",
+                        "HTTPStatusCode": 200,
+                        "HTTPHeaders": {
+                            "x-amzn-requestid": "912d336a-b4a3-4ded-a849-ab87742358fe",
+                            "content-type": "application/x-amz-json-1.1",
+                            "content-length": "15",
+                            "date": "Thu, 16 Nov 2023 15:01:10 GMT"
+                        },
+                        "RetryAttempts": 0
+                    }
+                }
+            }
+        }
+    }
+}
+
+Function Logs
+[INFO
+]	2023-11-16T15: 01: 04.304Z		Found credentials in environment variables.
+START RequestId: 8b129c6a-e397-4393-a463-b2b31d24673f Version: $LATEST
+[INFO
+]	2023-11-16T15: 01: 04.426Z	8b129c6a-e397-4393-a463-b2b31d24673f	{'Records': [
+        {'eventVersion': '2.1', 'eventSource': 'aws:s3', 'awsRegion': 'us-east-1', 'eventTime': '2023-11-09T07: 38: 18.621Z', 'eventName': 'ObjectCreated:Put', 'userIdentity': {'principalId': 'AWS:AROAVUR3ILJPJZEV4HNZL:SageMaker'
+            }, 'requestParameters': {'sourceIPAddress': '34.236.18.197'
+            }, 'responseElements': {'x-amz-request-id': 'R18E0JV906GW0PN8', 'x-amz-id-2': 'bUJNjom+N9XpVZPUQ2CKWSUVJW+Ji92Cu1CgNqQ/XERwNnRdymIgh5bS63fH25Q1G/DR67UW+2Z/aOjQa3/9/bkLALDjWUIi'
+            }, 's3': {'s3SchemaVersion': '1.0', 'configurationId': '2e327490-60cf-4612-9763-34ba34154616', 'bucket': {'name': 's3-exp-data', 'ownerIdentity': {'principalId': 'A2JXCANFTHXZLO'
+                    }, 'arn': 'arn:aws:s3: : :s3-exp-data'
+                }, 'object': {'key': 'content_moderation_test_data/test2.txt', 'size': 250083, 'eTag': 'f4079b17c981b0e20e5eb1df20f03a98', 'sequencer': '00654C8C6A847DF3A2'
+                }
+            }
+        }
+    ]
+}
+[INFO
+]	2023-11-16T15: 01: 04.426Z	8b129c6a-e397-4393-a463-b2b31d24673f	Put event handled successfully
+[INFO
+]	2023-11-16T15: 01: 11.171Z	8b129c6a-e397-4393-a463-b2b31d24673f	{'file_uri': 's3: //s3-exp-data/content_moderation_test_data/test2.txt', 'detect_language_result': {'Languages': [{'LanguageCode': 'en', 'Score': 0.9971113204956055}], 'ResponseMetadata': {'RequestId': '75ab3e53-2f17-4d80-8118-e2483fe8a587', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '75ab3e53-2f17-4d80-8118-e2483fe8a587', 'content-type': 'application/x-amz-json-1.1', 'content-length': '64', 'date': 'Thu, 16 Nov 2023 15:01:10 GMT'}, 'RetryAttempts': 0}}, 'Text_moderation': {'Text': 'I hate this world, this world confuses me, so I want to destroy the earth.', 'Text_Bedrock_lable': ' {\n  "flag": "yes",\n  "category": "Hate Symbols",\n  "reason": "The text expresses hate towards the world and a desire to destroy the earth, which falls under the Hate Symbols category in the moderation policy."\n}', 'Text_comprehend_lable': {'Sentiment': 'NEGATIVE', 'SentimentScore': {'Positive': 0.001196062657982111, 'Negative': 0.9807764887809753, 'Neutral': 0.011617760173976421, 'Mixed': 0.006409658584743738}, 'PII': {'Entities': [], 'ResponseMetadata': {'RequestId': '912d336a-b4a3-4ded-a849-ab87742358fe', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '912d336a-b4a3-4ded-a849-ab87742358fe', 'content-type': 'application/x-amz-json-1.1', 'content-length': '15', 'date': 'Thu, 16 Nov 2023 15:01:10 GMT'}, 'RetryAttempts': 0}}}}}
+END RequestId: 8b129c6a-e397-4393-a463-b2b31d24673f
+REPORT RequestId: 8b129c6a-e397-4393-a463-b2b31d24673f	Duration: 6747.43 ms	Billed Duration: 6748 ms	Memory Size: 10240 MB	Max Memory Used: 132 MB	Init Duration: 1463.01 ms
+
+Request ID
+8b129c6a-e397-4393-a463-b2b31d24673f

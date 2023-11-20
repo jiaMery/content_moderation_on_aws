@@ -1,0 +1,90 @@
+Test Event Name
+text-ch
+
+Response
+{
+    "statusCode": 200,
+    "content_moderation_result": {
+        "file_uri": "s3://s3-exp-data/content_moderation_test_data/test-ch.txt",
+        "Text_moderation": {
+            "Text": "我不喜欢这个世界，我要毁灭世界和地球，谁都阻拦不了我！我叫王得瑟，今年14岁，我的邮箱是8839294829@amazon.com，电话是16533343222.",
+            "Text_Bedrock_lable": " {\n  \"flag\": \"yes\",\n  \"category\": \"Hate Symbols\",\n  \"reason\": \"The text mentions 'destroy 
+            the world', which could be interpreted as promoting extremist ideologies.\"\n}",
+            "Text_comprehend_lable": {
+                "Sentiment": "NEGATIVE",
+                "SentimentScore": {
+                    "Positive": 0.05119325965642929,
+                    "Negative": 0.6485733389854431,
+                    "Neutral": 0.2595466077327728,
+                    "Mixed": 0.04068684205412865
+                },
+                "PII": {
+                    "Entities": [
+                        {
+                            "Score": 0.9978684782981873,
+                            "Type": "NAME",
+                            "BeginOffset": 99,
+                            "EndOffset": 109
+                        },
+                        {
+                            "Score": 0.9997011423110962,
+                            "Type": "AGE",
+                            "BeginOffset": 111,
+                            "EndOffset": 119
+                        },
+                        {
+                            "Score": 0.9984453320503235,
+                            "Type": "EMAIL",
+                            "BeginOffset": 130,
+                            "EndOffset": 151
+                        },
+                        {
+                            "Score": 0.9999812841415405,
+                            "Type": "PHONE",
+                            "BeginOffset": 172,
+                            "EndOffset": 183
+                        }
+                    ],
+                    "ResponseMetadata": {
+                        "RequestId": "2e1a33f0-e6cc-4752-b5c9-bad453b03504",
+                        "HTTPStatusCode": 200,
+                        "HTTPHeaders": {
+                            "x-amzn-requestid": "2e1a33f0-e6cc-4752-b5c9-bad453b03504",
+                            "content-type": "application/x-amz-json-1.1",
+                            "content-length": "322",
+                            "date": "Thu, 16 Nov 2023 16:55:15 GMT"
+                        },
+                        "RetryAttempts": 0
+                    }
+                }
+            }
+        }
+    }
+}
+
+Function Logs
+[INFO
+]	2023-11-16T16: 55: 03.405Z		Found credentials in environment variables.
+START RequestId: 90e6308c-d723-4488-a775-5cb4a9da5c65 Version: $LATEST
+[INFO
+]	2023-11-16T16: 55: 03.537Z	90e6308c-d723-4488-a775-5cb4a9da5c65	{'Records': [
+        {'eventVersion': '2.1', 'eventSource': 'aws:s3', 'awsRegion': 'us-east-1', 'eventTime': '2023-11-09T07: 38: 18.621Z', 'eventName': 'ObjectCreated:Put', 'userIdentity': {'principalId': 'AWS:AROAVUR3ILJPJZEV4HNZL:SageMaker'
+            }, 'requestParameters': {'sourceIPAddress': '34.236.18.197'
+            }, 'responseElements': {'x-amz-request-id': 'R18E0JV906GW0PN8', 'x-amz-id-2': 'bUJNjom+N9XpVZPUQ2CKWSUVJW+Ji92Cu1CgNqQ/XERwNnRdymIgh5bS63fH25Q1G/DR67UW+2Z/aOjQa3/9/bkLALDjWUIi'
+            }, 's3': {'s3SchemaVersion': '1.0', 'configurationId': '2e327490-60cf-4612-9763-34ba34154616', 'bucket': {'name': 's3-exp-data', 'ownerIdentity': {'principalId': 'A2JXCANFTHXZLO'
+                    }, 'arn': 'arn:aws:s3: : :s3-exp-data'
+                }, 'object': {'key': 'content_moderation_test_data/test-ch.txt', 'size': 250083, 'eTag': 'f4079b17c981b0e20e5eb1df20f03a98', 'sequencer': '00654C8C6A847DF3A2'
+                }
+            }
+        }
+    ]
+}
+[INFO
+]	2023-11-16T16: 55: 03.538Z	90e6308c-d723-4488-a775-5cb4a9da5c65	Put event handled successfully
+[INFO
+]	2023-11-16T16: 55: 16.575Z	90e6308c-d723-4488-a775-5cb4a9da5c65	{'file_uri': 's3: //s3-exp-data/content_moderation_test_data/test-ch.txt', 'Text_moderation': {'Text': '我不喜欢这个世界，我要毁灭世界和地球，谁都阻拦不了我！我叫王得瑟，今年14岁，我的邮箱是8839294829@amazon.com，电话是16533343222.', 'Text_Bedrock_lable': ' {\n  "flag": "yes",\n  "category": "Hate Symbols",\n  "reason": "The text mentions \'destroy the world\', which could be interpreted as promoting extremist ideologies."\n}', 'Text_comprehend_lable': {'Sentiment': 'NEGATIVE', 'SentimentScore': {'Positive': 0.05119325965642929, 'Negative': 0.6485733389854431, 'Neutral': 0.2595466077327728, 'Mixed': 0.04068684205412865}, 'PII': {'Entities': [{'Score': 0.9978684782981873, 'Type': 'NAME', 'BeginOffset': 99, 'EndOffset': 109}, {'Score': 0.9997011423110962, 'Type': 'AGE', 'BeginOffset': 111, 'EndOffset': 119}, {'Score': 0.9984453320503235, 'Type': 'EMAIL', 'BeginOffset': 130, 'EndOffset': 151}, {'Score': 0.9999812841415405, 'Type': 'PHONE', 'BeginOffset': 172, 'EndOffset': 183}], 'ResponseMetadata': {'RequestId': '2e1a33f0-e6cc-4752-b5c9-bad453b03504', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '2e1a33f0-e6cc-4752-b5c9-bad453b03504', 'content-type': 'application/x-amz-json-1.1', 'content-length': '322', 'date': 'Thu, 16 Nov 2023 16:55:15 GMT'}, 'RetryAttempts': 0}}}}}
+END RequestId: 90e6308c-d723-4488-a775-5cb4a9da5c65
+REPORT RequestId: 90e6308c-d723-4488-a775-5cb4a9da5c65	Duration: 13040.77 ms	Billed Duration: 13041 ms	Memory Size: 10240 MB	Max Memory Used: 131 MB	Init Duration: 1610.15 ms
+
+Request ID
+90e6308c-d723-4488-a775-5cb4a9da5c65

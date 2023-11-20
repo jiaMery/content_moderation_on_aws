@@ -3,264 +3,375 @@ test-image-txt-extra
 
 Response
 {
-  "statusCode": 200,
-  "content_moderation_result": {
-    "file_uri": "s3://s3-exp-data/content_moderation_test_data/green_car.jpeg",
-    "Image_moderation_lable": {
-      "ModerationLabels": [],
-      "ModerationModelVersion": "6.1",
-      "ResponseMetadata": {
-        "RequestId": "b6bdb877-4cbc-4cf5-9a03-834ea8adad2c",
-        "HTTPStatusCode": 200,
-        "HTTPHeaders": {
-          "x-amzn-requestid": "b6bdb877-4cbc-4cf5-9a03-834ea8adad2c",
-          "content-type": "application/x-amz-json-1.1",
-          "content-length": "72",
-          "date": "Tue, 14 Nov 2023 15:10:44 GMT"
+    "statusCode": 200,
+    "content_moderation_result": {
+        "file_uri": "s3://s3-exp-data/content_moderation_test_data/green_car.jpeg",
+        "detect_language_result": {
+            "Languages": [
+                {
+                    "LanguageCode": "ht",
+                    "Score": 0.2942321002483368
+                },
+                {
+                    "LanguageCode": "ceb",
+                    "Score": 0.24339674413204193
+                },
+                {
+                    "LanguageCode": "qu",
+                    "Score": 0.12561792135238647
+                }
+            ],
+            "ResponseMetadata": {
+                "RequestId": "f94d346c-5752-4d97-834d-a7b441271a12",
+                "HTTPStatusCode": 200,
+                "HTTPHeaders": {
+                    "x-amzn-requestid": "f94d346c-5752-4d97-834d-a7b441271a12",
+                    "content-type": "application/x-amz-json-1.1",
+                    "content-length": "165",
+                    "date": "Thu, 16 Nov 2023 15:10:43 GMT"
+                },
+                "RetryAttempts": 0
+            }
         },
-        "RetryAttempts": 0
-      }
-    },
-    "Image_Face_analysis_lable": {
-      "FaceDetails": [],
-      "ResponseMetadata": {
-        "RequestId": "a8876d4e-e1e0-4b6c-8945-78dd56687cf9",
-        "HTTPStatusCode": 200,
-        "HTTPHeaders": {
-          "x-amzn-requestid": "a8876d4e-e1e0-4b6c-8945-78dd56687cf9",
-          "content-type": "application/x-amz-json-1.1",
-          "content-length": "18",
-          "date": "Tue, 14 Nov 2023 15:10:45 GMT"
-        },
-        "RetryAttempts": 0
-      }
-    },
-    "Image_Celebrities_lable": {
-      "CelebrityFaces": [],
-      "UnrecognizedFaces": [],
-      "ResponseMetadata": {
-        "RequestId": "1a2da103-6a8e-45aa-9114-8af7e47532c0",
-        "HTTPStatusCode": 200,
-        "HTTPHeaders": {
-          "x-amzn-requestid": "1a2da103-6a8e-45aa-9114-8af7e47532c0",
-          "content-type": "application/x-amz-json-1.1",
-          "content-length": "44",
-          "date": "Tue, 14 Nov 2023 15:10:45 GMT"
-        },
-        "RetryAttempts": 0
-      }
-    },
-    "Extra_text_results": {
-      "TextDetections": [
-        {
-          "DetectedText": "COME",
-          "Type": "LINE",
-          "Id": 0,
-          "Confidence": 31.02080535888672,
-          "Geometry": {
-            "BoundingBox": {
-              "Width": 0.0377604179084301,
-              "Height": 0.01953125,
-              "Left": 0.259765625,
-              "Top": 0.1904296875
+        "Image_moderation": {
+            "Image_moderation_lable": {
+                "ModerationLabels": [],
+                "ModerationModelVersion": "6.1",
+                "ResponseMetadata": {
+                    "RequestId": "34195f20-34cc-4b26-a7b2-d5000381edf1",
+                    "HTTPStatusCode": 200,
+                    "HTTPHeaders": {
+                        "x-amzn-requestid": "34195f20-34cc-4b26-a7b2-d5000381edf1",
+                        "content-type": "application/x-amz-json-1.1",
+                        "content-length": "72",
+                        "date": "Thu, 16 Nov 2023 15:10:37 GMT"
+                    },
+                    "RetryAttempts": 0
+                }
             },
-            "Polygon": [
-              {
-                "X": 0.259765625,
-                "Y": 0.1904296875
-              },
-              {
-                "X": 0.2975260317325592,
-                "Y": 0.1904296875
-              },
-              {
-                "X": 0.2975260317325592,
-                "Y": 0.2099609375
-              },
-              {
-                "X": 0.259765625,
-                "Y": 0.2099609375
-              }
-            ]
-          }
-        },
-        {
-          "DetectedText": "J389 NLT",
-          "Type": "LINE",
-          "Id": 1,
-          "Confidence": 99.13363647460938,
-          "Geometry": {
-            "BoundingBox": {
-              "Width": 0.17217518389225006,
-              "Height": 0.07430465519428253,
-              "Left": 0.4664403200149536,
-              "Top": 0.708238422870636
+            "Image_Face_analysis_lable": {
+                "FaceDetails": [],
+                "ResponseMetadata": {
+                    "RequestId": "2e2c4cd2-a1de-4e1d-b4ba-2f80d53a4bf6",
+                    "HTTPStatusCode": 200,
+                    "HTTPHeaders": {
+                        "x-amzn-requestid": "2e2c4cd2-a1de-4e1d-b4ba-2f80d53a4bf6",
+                        "content-type": "application/x-amz-json-1.1",
+                        "content-length": "18",
+                        "date": "Thu, 16 Nov 2023 15:10:37 GMT"
+                    },
+                    "RetryAttempts": 0
+                }
             },
-            "Polygon": [
-              {
-                "X": 0.46951302886009216,
-                "Y": 0.708238422870636
-              },
-              {
-                "X": 0.6386155486106873,
-                "Y": 0.7308583855628967
-              },
-              {
-                "X": 0.6355428099632263,
-                "Y": 0.7825431227684021
-              },
-              {
-                "X": 0.4664403200149536,
-                "Y": 0.7599231600761414
-              }
-            ]
-          }
-        },
-        {
-          "DetectedText": "COME",
-          "Type": "WORD",
-          "Id": 2,
-          "ParentId": 0,
-          "Confidence": 31.02080535888672,
-          "Geometry": {
-            "BoundingBox": {
-              "Width": 0.0377604179084301,
-              "Height": 0.01953125,
-              "Left": 0.259765625,
-              "Top": 0.1904296875
+            "Image_Celebrities_lable": {
+                "CelebrityFaces": [],
+                "UnrecognizedFaces": [],
+                "ResponseMetadata": {
+                    "RequestId": "4dde3061-fa78-455c-b8ba-e9d026daddc2",
+                    "HTTPStatusCode": 200,
+                    "HTTPHeaders": {
+                        "x-amzn-requestid": "4dde3061-fa78-455c-b8ba-e9d026daddc2",
+                        "content-type": "application/x-amz-json-1.1",
+                        "content-length": "44",
+                        "date": "Thu, 16 Nov 2023 15:10:38 GMT"
+                    },
+                    "RetryAttempts": 0
+                }
             },
-            "Polygon": [
-              {
-                "X": 0.259765625,
-                "Y": 0.1904296875
-              },
-              {
-                "X": 0.2975260317325592,
-                "Y": 0.1904296875
-              },
-              {
-                "X": 0.2975260317325592,
-                "Y": 0.2099609375
-              },
-              {
-                "X": 0.259765625,
-                "Y": 0.2099609375
-              }
-            ]
-          }
-        },
-        {
-          "DetectedText": "J389",
-          "Type": "WORD",
-          "Id": 3,
-          "ParentId": 1,
-          "Confidence": 99.59162139892578,
-          "Geometry": {
-            "BoundingBox": {
-              "Width": 0.09209910035133362,
-              "Height": 0.06247055158019066,
-              "Left": 0.46655288338661194,
-              "Top": 0.7082650661468506
+            "Text_from_Image_Confidence99": "J389 NLTJ389",
+            "Extra_text_results": {
+                "TextDetections": [
+                    {
+                        "DetectedText": "COME",
+                        "Type": "LINE",
+                        "Id": 0,
+                        "Confidence": 31.02080535888672,
+                        "Geometry": {
+                            "BoundingBox": {
+                                "Width": 0.0377604179084301,
+                                "Height": 0.01953125,
+                                "Left": 0.259765625,
+                                "Top": 0.1904296875
+                            },
+                            "Polygon": [
+                                {
+                                    "X": 0.259765625,
+                                    "Y": 0.1904296875
+                                },
+                                {
+                                    "X": 0.2975260317325592,
+                                    "Y": 0.1904296875
+                                },
+                                {
+                                    "X": 0.2975260317325592,
+                                    "Y": 0.2099609375
+                                },
+                                {
+                                    "X": 0.259765625,
+                                    "Y": 0.2099609375
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "DetectedText": "J389 NLT",
+                        "Type": "LINE",
+                        "Id": 1,
+                        "Confidence": 99.13363647460938,
+                        "Geometry": {
+                            "BoundingBox": {
+                                "Width": 0.17217518389225006,
+                                "Height": 0.07430465519428253,
+                                "Left": 0.4664403200149536,
+                                "Top": 0.708238422870636
+                            },
+                            "Polygon": [
+                                {
+                                    "X": 0.46951302886009216,
+                                    "Y": 0.708238422870636
+                                },
+                                {
+                                    "X": 0.6386155486106873,
+                                    "Y": 0.7308583855628967
+                                },
+                                {
+                                    "X": 0.6355428099632263,
+                                    "Y": 0.7825431227684021
+                                },
+                                {
+                                    "X": 0.4664403200149536,
+                                    "Y": 0.7599231600761414
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "DetectedText": "COME",
+                        "Type": "WORD",
+                        "Id": 2,
+                        "ParentId": 0,
+                        "Confidence": 31.02080535888672,
+                        "Geometry": {
+                            "BoundingBox": {
+                                "Width": 0.0377604179084301,
+                                "Height": 0.01953125,
+                                "Left": 0.259765625,
+                                "Top": 0.1904296875
+                            },
+                            "Polygon": [
+                                {
+                                    "X": 0.259765625,
+                                    "Y": 0.1904296875
+                                },
+                                {
+                                    "X": 0.2975260317325592,
+                                    "Y": 0.1904296875
+                                },
+                                {
+                                    "X": 0.2975260317325592,
+                                    "Y": 0.2099609375
+                                },
+                                {
+                                    "X": 0.259765625,
+                                    "Y": 0.2099609375
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "DetectedText": "J389",
+                        "Type": "WORD",
+                        "Id": 3,
+                        "ParentId": 1,
+                        "Confidence": 99.59162139892578,
+                        "Geometry": {
+                            "BoundingBox": {
+                                "Width": 0.09209910035133362,
+                                "Height": 0.06247055158019066,
+                                "Left": 0.46655288338661194,
+                                "Top": 0.7082650661468506
+                            },
+                            "Polygon": [
+                                {
+                                    "X": 0.46971258521080017,
+                                    "Y": 0.7082650661468506
+                                },
+                                {
+                                    "X": 0.5586519837379456,
+                                    "Y": 0.7209707498550415
+                                },
+                                {
+                                    "X": 0.5554922819137573,
+                                    "Y": 0.7707356214523315
+                                },
+                                {
+                                    "X": 0.46655288338661194,
+                                    "Y": 0.7580299377441406
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "DetectedText": "NLT",
+                        "Type": "WORD",
+                        "Id": 4,
+                        "ParentId": 1,
+                        "Confidence": 98.67565155029297,
+                        "Geometry": {
+                            "BoundingBox": {
+                                "Width": 0.07263366878032684,
+                                "Height": 0.060302734375,
+                                "Left": 0.5658642649650574,
+                                "Top": 0.7218812704086304
+                            },
+                            "Polygon": [
+                                {
+                                    "X": 0.5687980651855469,
+                                    "Y": 0.7218812704086304
+                                },
+                                {
+                                    "X": 0.6384979486465454,
+                                    "Y": 0.730842649936676
+                                },
+                                {
+                                    "X": 0.6355640888214111,
+                                    "Y": 0.7821840047836304
+                                },
+                                {
+                                    "X": 0.5658642649650574,
+                                    "Y": 0.7732225656509399
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "TextModelVersion": "3.0",
+                "ResponseMetadata": {
+                    "RequestId": "804cd85a-d6fd-4a49-a62b-600482bf3575",
+                    "HTTPStatusCode": 200,
+                    "HTTPHeaders": {
+                        "x-amzn-requestid": "804cd85a-d6fd-4a49-a62b-600482bf3575",
+                        "content-type": "application/x-amz-json-1.1",
+                        "content-length": "2046",
+                        "date": "Thu, 16 Nov 2023 15:10:40 GMT"
+                    },
+                    "RetryAttempts": 0
+                }
             },
-            "Polygon": [
-              {
-                "X": 0.46971258521080017,
-                "Y": 0.7082650661468506
-              },
-              {
-                "X": 0.5586519837379456,
-                "Y": 0.7209707498550415
-              },
-              {
-                "X": 0.5554922819137573,
-                "Y": 0.7707356214523315
-              },
-              {
-                "X": 0.46655288338661194,
-                "Y": 0.7580299377441406
-              }
-            ]
-          }
-        },
-        {
-          "DetectedText": "NLT",
-          "Type": "WORD",
-          "Id": 4,
-          "ParentId": 1,
-          "Confidence": 98.67565155029297,
-          "Geometry": {
-            "BoundingBox": {
-              "Width": 0.07263366878032684,
-              "Height": 0.060302734375,
-              "Left": 0.5658642649650574,
-              "Top": 0.7218812704086304
-            },
-            "Polygon": [
-              {
-                "X": 0.5687980651855469,
-                "Y": 0.7218812704086304
-              },
-              {
-                "X": 0.6384979486465454,
-                "Y": 0.730842649936676
-              },
-              {
-                "X": 0.6355640888214111,
-                "Y": 0.7821840047836304
-              },
-              {
-                "X": 0.5658642649650574,
-                "Y": 0.7732225656509399
-              }
-            ]
-          }
+            "ImageText_bedrock_lable": " Based on the provided moderation policy and text information, I do not have enough context to determine if the photo contains unsafe content. The text \"J389 NLTJ389\" does not indicate any obvious policy violations. Without seeing the actual photo, I cannot make an assessment. I would suggest providing the photo itself or more descriptive text for analysis.",
+            "ImageText_comprehend_lable": {
+                "Sentiment": "NEUTRAL",
+                "SentimentScore": {
+                    "Positive": 0.0010731436777859926,
+                    "Negative": 0.0001743100438034162,
+                    "Neutral": 0.9987472295761108,
+                    "Mixed": 0.000005258203600533307
+                },
+                "PII": {
+                    "Entities": [],
+                    "ResponseMetadata": {
+                        "RequestId": "8c1e493d-0feb-42b8-9d83-3008e3266a00",
+                        "HTTPStatusCode": 200,
+                        "HTTPHeaders": {
+                            "x-amzn-requestid": "8c1e493d-0feb-42b8-9d83-3008e3266a00",
+                            "content-type": "application/x-amz-json-1.1",
+                            "content-length": "15",
+                            "date": "Thu, 16 Nov 2023 15:10:43 GMT"
+                        },
+                        "RetryAttempts": 0
+                    }
+                }
+            }
         }
-      ],
-      "TextModelVersion": "3.0",
-      "ResponseMetadata": {
-        "RequestId": "525564af-5802-4854-a00d-0dcff3959d41",
-        "HTTPStatusCode": 200,
-        "HTTPHeaders": {
-          "x-amzn-requestid": "525564af-5802-4854-a00d-0dcff3959d41",
-          "content-type": "application/x-amz-json-1.1",
-          "content-length": "2046",
-          "date": "Tue, 14 Nov 2023 15:10:46 GMT"
-        },
-        "RetryAttempts": 0
-      }
-    },
-    "Text_from_Image": "J389 NLTJ389",
-    "ImageText_bedrock_lable": " {\n  \"flag\": \"no\",\n  \"category\": \"\", \n  \"reason\": \"Based on the given text information 'J389 NLTJ389', there is no evidence that it contains unsafe content according to the moderation policy. The text does not seem to depict nudity, violence, disturbing content, rude gestures, drugs, tobacco, alcohol, gambling, or hate symbols.\"\n}",
-    "ImageText_comprehend_lable": {
-      "Sentiment": "NEUTRAL",
-      "SentimentScore": {
-        "Positive": 0.0010731436777859926,
-        "Negative": 0.0001743100438034162,
-        "Neutral": 0.9987472295761108,
-        "Mixed": 0.000005258203600533307
-      },
-      "PII": {
-        "Entities": [],
-        "ResponseMetadata": {
-          "RequestId": "faed3609-acca-47d9-a81e-9dc88778507d",
-          "HTTPStatusCode": 200,
-          "HTTPHeaders": {
-            "x-amzn-requestid": "faed3609-acca-47d9-a81e-9dc88778507d",
-            "content-type": "application/x-amz-json-1.1",
-            "content-length": "15",
-            "date": "Tue, 14 Nov 2023 15:10:57 GMT"
-          },
-          "RetryAttempts": 0
-        }
-      }
     }
-  }
 }
 
 Function Logs
-: 0}}, 'Image_Celebrities_lable': {'CelebrityFaces': [], 'UnrecognizedFaces': [], 'ResponseMetadata': {'RequestId': '1a2da103-6a8e-45aa-9114-8af7e47532c0', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '1a2da103-6a8e-45aa-9114-8af7e47532c0', 'content-type': 'application/x-amz-json-1.1', 'content-length': '44', 'date': 'Tue, 14 Nov 2023 15:10:45 GMT'}, 'RetryAttempts': 0}}, 'Extra_text_results': {'TextDetections': [{'DetectedText': 'COME', 'Type': 'LINE', 'Id': 0, 'Confidence': 31.02080535888672, 'Geometry': {'BoundingBox': {'Width': 0.0377604179084301, 'Height': 0.01953125, 'Left': 0.259765625, 'Top': 0.1904296875}, 'Polygon': [{'X': 0.259765625, 'Y': 0.1904296875}, {'X': 0.2975260317325592, 'Y': 0.1904296875}, {'X': 0.2975260317325592, 'Y': 0.2099609375}, {'X': 0.259765625, 'Y': 0.2099609375}]}}, {'DetectedText': 'J389 NLT', 'Type': 'LINE', 'Id': 1, 'Confidence': 99.13363647460938, 'Geometry': {'BoundingBox': {'Width': 0.17217518389225006, 'Height': 0.07430465519428253, 'Left': 0.4664403200149536, 'Top': 0.708238422870636}, 'Polygon': [{'X': 0.46951302886009216, 'Y': 0.708238422870636}, {'X': 0.6386155486106873, 'Y': 0.7308583855628967}, {'X': 0.6355428099632263, 'Y': 0.7825431227684021}, {'X': 0.4664403200149536, 'Y': 0.7599231600761414}]}}, {'DetectedText': 'COME', 'Type': 'WORD', 'Id': 2, 'ParentId': 0, 'Confidence': 31.02080535888672, 'Geometry': {'BoundingBox': {'Width': 0.0377604179084301, 'Height': 0.01953125, 'Left': 0.259765625, 'Top': 0.1904296875}, 'Polygon': [{'X': 0.259765625, 'Y': 0.1904296875}, {'X': 0.2975260317325592, 'Y': 0.1904296875}, {'X': 0.2975260317325592, 'Y': 0.2099609375}, {'X': 0.259765625, 'Y': 0.2099609375}]}}, {'DetectedText': 'J389', 'Type': 'WORD', 'Id': 3, 'ParentId': 1, 'Confidence': 99.59162139892578, 'Geometry': {'BoundingBox': {'Width': 0.09209910035133362, 'Height': 0.06247055158019066, 'Left': 0.46655288338661194, 'Top': 0.7082650661468506}, 'Polygon': [{'X': 0.46971258521080017, 'Y': 0.7082650661468506}, {'X': 0.5586519837379456, 'Y': 0.7209707498550415}, {'X': 0.5554922819137573, 'Y': 0.7707356214523315}, {'X': 0.46655288338661194, 'Y': 0.7580299377441406}]}}, {'DetectedText': 'NLT', 'Type': 'WORD', 'Id': 4, 'ParentId': 1, 'Confidence': 98.67565155029297, 'Geometry': {'BoundingBox': {'Width': 0.07263366878032684, 'Height': 0.060302734375, 'Left': 0.5658642649650574, 'Top': 0.7218812704086304}, 'Polygon': [{'X': 0.5687980651855469, 'Y': 0.7218812704086304}, {'X': 0.6384979486465454, 'Y': 0.730842649936676}, {'X': 0.6355640888214111, 'Y': 0.7821840047836304}, {'X': 0.5658642649650574, 'Y': 0.7732225656509399}]}}], 'TextModelVersion': '3.0', 'ResponseMetadata': {'RequestId': '525564af-5802-4854-a00d-0dcff3959d41', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '525564af-5802-4854-a00d-0dcff3959d41', 'content-type': 'application/x-amz-json-1.1', 'content-length': '2046', 'date': 'Tue, 14 Nov 2023 15:10:46 GMT'}, 'RetryAttempts': 0}}, 'Text_from_Image': 'J389 NLTJ389', 'ImageText_bedrock_lable': ' {\n  "flag": "no",\n  "category": "", \n  "reason": "Based on the given text information \'J389 NLTJ389\', there is no evidence that it contains unsafe content according to the moderation policy. The text does not seem to depict nudity, violence, disturbing content, rude gestures, drugs, tobacco, alcohol, gambling, or hate symbols."\n}', 'ImageText_comprehend_lable': {'Sentiment': 'NEUTRAL', 'SentimentScore': {'Positive': 0.0010731436777859926, 'Negative': 0.0001743100438034162, 'Neutral': 0.9987472295761108, 'Mixed': 5.258203600533307e-06}, 'PII': {'Entities': [], 'ResponseMetadata': {'RequestId': 'faed3609-acca-47d9-a81e-9dc88778507d', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': 'faed3609-acca-47d9-a81e-9dc88778507d', 'content-type': 'application/x-amz-json-1.1', 'content-length': '15', 'date': 'Tue, 14 Nov 2023 15:10:57 GMT'}, 'RetryAttempts': 0}}}}
-END RequestId: 0de044df-24ee-48cb-91e6-4776484d5961
-REPORT RequestId: 0de044df-24ee-48cb-91e6-4776484d5961	Duration: 13042.01 ms	Billed Duration: 13043 ms	Memory Size: 10240 MB	Max Memory Used: 136 MB
+nrecognizedFaces': [], 'ResponseMetadata': {'RequestId': '4dde3061-fa78-455c-b8ba-e9d026daddc2', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '4dde3061-fa78-455c-b8ba-e9d026daddc2', 'content-type': 'application/x-amz-json-1.1', 'content-length': '44', 'date': 'Thu,
+        16 Nov 2023 15: 10: 38 GMT'
+    }, 'RetryAttempts': 0
+}
+}, 'Text_from_Image_Confidence99': 'J389 NLTJ389', 'Extra_text_results': {'TextDetections': [
+    {'DetectedText': 'COME', 'Type': 'LINE', 'Id': 0, 'Confidence': 31.02080535888672, 'Geometry': {'BoundingBox': {'Width': 0.0377604179084301, 'Height': 0.01953125, 'Left': 0.259765625, 'Top': 0.1904296875
+            }, 'Polygon': [
+                {'X': 0.259765625, 'Y': 0.1904296875
+                },
+                {'X': 0.2975260317325592, 'Y': 0.1904296875
+                },
+                {'X': 0.2975260317325592, 'Y': 0.2099609375
+                },
+                {'X': 0.259765625, 'Y': 0.2099609375
+                }
+            ]
+        }
+    },
+    {'DetectedText': 'J389 NLT', 'Type': 'LINE', 'Id': 1, 'Confidence': 99.13363647460938, 'Geometry': {'BoundingBox': {'Width': 0.17217518389225006, 'Height': 0.07430465519428253, 'Left': 0.4664403200149536, 'Top': 0.708238422870636
+            }, 'Polygon': [
+                {'X': 0.46951302886009216, 'Y': 0.708238422870636
+                },
+                {'X': 0.6386155486106873, 'Y': 0.7308583855628967
+                },
+                {'X': 0.6355428099632263, 'Y': 0.7825431227684021
+                },
+                {'X': 0.4664403200149536, 'Y': 0.7599231600761414
+                }
+            ]
+        }
+    },
+    {'DetectedText': 'COME', 'Type': 'WORD', 'Id': 2, 'ParentId': 0, 'Confidence': 31.02080535888672, 'Geometry': {'BoundingBox': {'Width': 0.0377604179084301, 'Height': 0.01953125, 'Left': 0.259765625, 'Top': 0.1904296875
+            }, 'Polygon': [
+                {'X': 0.259765625, 'Y': 0.1904296875
+                },
+                {'X': 0.2975260317325592, 'Y': 0.1904296875
+                },
+                {'X': 0.2975260317325592, 'Y': 0.2099609375
+                },
+                {'X': 0.259765625, 'Y': 0.2099609375
+                }
+            ]
+        }
+    },
+    {'DetectedText': 'J389', 'Type': 'WORD', 'Id': 3, 'ParentId': 1, 'Confidence': 99.59162139892578, 'Geometry': {'BoundingBox': {'Width': 0.09209910035133362, 'Height': 0.06247055158019066, 'Left': 0.46655288338661194, 'Top': 0.7082650661468506
+            }, 'Polygon': [
+                {'X': 0.46971258521080017, 'Y': 0.7082650661468506
+                },
+                {'X': 0.5586519837379456, 'Y': 0.7209707498550415
+                },
+                {'X': 0.5554922819137573, 'Y': 0.7707356214523315
+                },
+                {'X': 0.46655288338661194, 'Y': 0.7580299377441406
+                }
+            ]
+        }
+    },
+    {'DetectedText': 'NLT', 'Type': 'WORD', 'Id': 4, 'ParentId': 1, 'Confidence': 98.67565155029297, 'Geometry': {'BoundingBox': {'Width': 0.07263366878032684, 'Height': 0.060302734375, 'Left': 0.5658642649650574, 'Top': 0.7218812704086304
+            }, 'Polygon': [
+                {'X': 0.5687980651855469, 'Y': 0.7218812704086304
+                },
+                {'X': 0.6384979486465454, 'Y': 0.730842649936676
+                },
+                {'X': 0.6355640888214111, 'Y': 0.7821840047836304
+                },
+                {'X': 0.5658642649650574, 'Y': 0.7732225656509399
+                }
+            ]
+        }
+    }
+], 'TextModelVersion': '3.0', 'ResponseMetadata': {'RequestId': '804cd85a-d6fd-4a49-a62b-600482bf3575', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '804cd85a-d6fd-4a49-a62b-600482bf3575', 'content-type': 'application/x-amz-json-1.1', 'content-length': '2046', 'date': 'Thu,
+        16 Nov 2023 15: 10: 40 GMT'
+    }, 'RetryAttempts': 0
+}
+}, 'ImageText_bedrock_lable': ' Based on the provided moderation policy and text information, I do not have enough context to determine if the photo contains unsafe content. The text "J389 NLTJ389" does not indicate any obvious policy violations. Without seeing the actual photo, I cannot make an assessment. I would suggest providing the photo itself or more descriptive text for analysis.', 'ImageText_comprehend_lable': {'Sentiment': 'NEUTRAL', 'SentimentScore': {'Positive': 0.0010731436777859926, 'Negative': 0.0001743100438034162, 'Neutral': 0.9987472295761108, 'Mixed': 5.258203600533307e-06
+}, 'PII': {'Entities': [], 'ResponseMetadata': {'RequestId': '8c1e493d-0feb-42b8-9d83-3008e3266a00', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '8c1e493d-0feb-42b8-9d83-3008e3266a00', 'content-type': 'application/x-amz-json-1.1', 'content-length': '15', 'date': 'Thu,
+            16 Nov 2023 15: 10: 43 GMT'
+        }, 'RetryAttempts': 0
+    }
+}
+}
+}
+}
+END RequestId: 01113d6b-96ab-4f2a-88c2-e725c9ae8956
+REPORT RequestId: 01113d6b-96ab-4f2a-88c2-e725c9ae8956	Duration: 6145.86 ms	Billed Duration: 6146 ms	Memory Size: 10240 MB	Max Memory Used: 134 MB	Init Duration: 1281.71 ms
 
 Request ID
-0de044df-24ee-48cb-91e6-4776484d5961
+01113d6b-96ab-4f2a-88c2-e725c9ae8956
