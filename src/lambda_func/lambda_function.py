@@ -23,8 +23,7 @@ image_file = ["jpg", "jpeg", "png"]
 video_file = ["mp4", "mov"]
 audio_file = ["amr", "flac", "mp3", "mp4", "ogg", "webm", "wav"]
 text_file = ["txt"]
-
-content_result = edict()
+content_result = edict({})
 
 def translate2en(text):
     translate = boto3.client(service_name='translate')
@@ -40,7 +39,7 @@ def translate2en(text):
     sentiment = comprehend.detect_sentiment(Text=text_en, LanguageCode= 'en')
     pii_entities = comprehend.detect_pii_entities(Text=text_en, LanguageCode='en')
 
-    if language_code != 'en':
+     if language_code != 'en':
         # Translate text's language code to English
         response = translate.translate_text(Text=text, SourceLanguageCode=language_code, TargetLanguageCode="en")
         text = response["TranslatedText"]
