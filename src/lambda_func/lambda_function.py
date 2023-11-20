@@ -26,13 +26,8 @@ text_file = ["txt"]
 
 content_result = edict()
 
-
-def comprehend_dect(text):
-    comprehend_analysis_dict = edict()
-    is_negative = False 
-    negative_score = 0
-    age = None
-
+def translate2en(text):
+    translate = boto3.client(service_name='translate')
     comprehend = boto3.client(service_name='comprehend')
     translate = boto3.client(service_name='translate')
     # Detect language
@@ -42,6 +37,25 @@ def comprehend_dect(text):
         text_en = text
     else:
         text_en = translate.translate_text(Text=text, SourceLanguageCode=language_code, TargetLanguageCode="en")
+    sentiment = comprehend.detect_sentiment(Text=text_en, LanguageCode= 'en')
+    pii_entities = comprehend.detect_pii_entities(Text=text_en, LanguageCode='en')
+
+    if language_code != 'en':
+        # Translate text's language code to English
+        response = translate.translate_text(Text=text, SourceLanguageCode=language_code, TargetLanguageCode="en")
+        text = response["TranslatedText"]
+    else:
+        pass
+    return text
+
+def comprehend_dect(text):
+    comprehend = boto3.client(service_name='comprehend')
+    comprehend_analysis_dict = edict()
+
+    text = translate2en(text)
+    sentiment = comprehend.detect_sentiment(Text=text, LanguageCode= 'en')
+    pii_entities = comprehend.detect_pii_entities(Text=text, LanguageCode='en')   
+
     sentiment = comprehend.detect_sentiment(Text=text_en, LanguageCode= 'en')
     pii_entities = comprehend.detect_pii_entities(Text=text_en, LanguageCode='en')
     comprehend_analysis_dict['Sentiment'] = sentiment['Sentiment']
