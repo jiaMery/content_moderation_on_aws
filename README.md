@@ -1,4 +1,4 @@
- # Multi-Modal Intelligent Content Review
+ # Multi-Modal Intelligent Content Moderation
 
 This repository contains the implementation of the Multi-Modal Intelligent Content Review based on AWS AI services. For detailed deployment steps and additional information, please refer to our [blog post](https://aws.amazon.com/cn/blogs/china/multi-modal-intelligent-content-review-based-on-aws-ai-services/).
 
