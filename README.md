@@ -6,7 +6,7 @@
 
 ## 免责申明
 建议测试过程中使用此方案，生产环境使用请自行考虑评估。
-欢迎联系参与方案共建和提交方案需求, 也欢迎在 github 项目 issue 中留言反馈 bugs。
+欢迎联系参与方案共建和提交方案需求, 也欢迎在 github 项目 issue 中留言反馈。
 
 ## 整体架构
 ![architect](./Image/moderation-architect.jpg)
