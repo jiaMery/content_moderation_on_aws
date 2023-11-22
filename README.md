@@ -1,2 +1,20 @@
-# content_moderation_on_aws
- deploy step on this link<https://quip-amazon.com/efOkAXANCHEq/AmazonAI>
+ # Multi-Modal Intelligent Content Review
+
+This repository contains the implementation of the Multi-Modal Intelligent Content Review based on AWS AI services. For detailed deployment steps and additional information, please refer to our [blog post](https://aws.amazon.com/cn/blogs/china/multi-modal-intelligent-content-review-based-on-aws-ai-services/).
+
+## Architecture Overview
+
+![Architecture Diagram](./document/SolutionArchitecture.jpg)
+
+## Deployment Steps
+
+### Step 1: Bedrock Permission Application
+
+### Step 2: Create S3 Bucket, Lambda Setup
+
+### Step 3: Deploy Lambda Functions
+
+...
+
+For more details and insights, please visit our [blog post](https://aws.amazon.com/cn/blogs/china/multi-modal-intelligent-content-review-based-on-aws-ai-services/).
+
