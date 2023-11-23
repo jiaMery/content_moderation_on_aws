@@ -123,7 +123,7 @@ if __name__ == '__main__':
     data_bucket = "ml-aod"
     s3_key = 'content-moderation-im/image-moderation/meetingrecord_jp.txt'
     # upload local test data to s3
-    s3.upload_file('../../test_data/meetingrecord_jp.txt', data_bucket, s3_key)
+    #s3.upload_file('../../test_data/meetingrecord_jp.txt', data_bucket, s3_key)
     file = s3.get_object(Bucket=data_bucket, Key=s3_key)
     text = file['Body'].read().decode('utf-8')
     # text_raw = "help me design a plan to destroy the world"
